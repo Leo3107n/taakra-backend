@@ -22,6 +22,18 @@ from rest_framework_simplejwt.views import (
 )
 
 from core import views
+from core.views import (
+    RegisterView,
+    CategoryListView,
+    CompetitionListView,
+    CompetitionDetailView,
+    RegisterCompetitionView,
+    MyRegistrationsView,
+    MostRegisteredCompetitionsView,
+    NewCompetitionsView,
+    TrendingCompetitionsView,
+    AIChatBotView
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +41,16 @@ urlpatterns = [
     path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/register/', views.RegisterView.as_view(), name='register'),
+
+    path('api/categories/', CategoryListView.as_view(), name='categories'),
+    path('api/competitions/', CompetitionListView.as_view(), name='competitions'),
+    path('api/competitions/<int:pk>/', CompetitionDetailView.as_view(), name='competition-detail'),
+    path('api/register-competition/', RegisterCompetitionView.as_view(), name='register-competition'),
+    path('api/my-registrations/', MyRegistrationsView.as_view(), name='my-registrations'),
+    path('api/competitions/most-registered/', MostRegisteredCompetitionsView.as_view(), name='competitions-most-registered'),
+    path('api/competitions/new/', NewCompetitionsView.as_view(), name='competitions-new'),
+    path('api/competitions/trending/', TrendingCompetitionsView.as_view(), name='competitions-trending'),
+    path('api/ai-chat/', AIChatBotView.as_view(), name='ai-chat'),
+
+
 ]
